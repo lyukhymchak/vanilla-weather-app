@@ -1,4 +1,58 @@
-html,
 body {
   font-family: "Gelasio", serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: rgb(68, 67, 67);
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 19px;
+}
+
+#current-city {
+  text-align: center;
+}
+#current-temperature {
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+}
+#currrent-weather-img {
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
+}
+.units {
+  position: relative;
+  font-size: 12px;
+  top: -8px;
+}
+#page-title {
+  text-align: center;
+}
+#footer {
+  text-align: center;
+}
+
+.weather-info {
+  margin-bottom: 20px;
+}
+.weather-app {
+  background-color: #ffdee9;
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+}
+
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 50px auto;
 }

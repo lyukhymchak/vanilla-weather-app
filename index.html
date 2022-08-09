@@ -28,42 +28,43 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h2>Weather forecast</h2>
-      </header>
-      <div class="row weather-info">
-        <div class="col">
-          <ul>
-            <li>Sunday 12:00</li>
-            <li>Clear sky</li>
-          </ul>
+    <div class="weather-app-wrapper">
+      <div class="container weather-app">
+        <header>
+          <h2 id="page-title">Weather forecast</h2>
+        </header>
+        <div class="row weather-info">
+          <div class="col d-flex align-items-center">
+            <ul>
+              <li>Sunday 12:00, clear sky</li>
+              <li>Humidity</li>
+              <li>Wind</li>
+            </ul>
+          </div>
+          <div class="col d-flex align-items-center">
+            <img
+              id="currrent-weather-img"
+              src="http://openweathermap.org/img/wn/01d@2x.png"
+              alt="Clear sky"
+            />
+            <span id="current-temperature">20</span
+            ><span class="units">℃|℉</span>
+          </div>
+          <div class="col d-flex align-items-center">
+            <h1 id="current-city">Tallinn</h1>
+          </div>
         </div>
-        <div class="col">
-          <img
-            src="http://openweathermap.org/img/wn/01d@2x.png"
-            alt="Clear sky"
-          />
-          <span>Temperature</span>
-        </div>
-        <div class="col">
-          <h1>Tallinn</h1>
-          <ul>
-            <li>Humidity</li>
-            <li>Wind</li>
-          </ul>
-        </div>
+        <footer id="footer">
+          <small>
+            <a
+              href="https://github.com/lyukhymchak/vanilla-weather-app.git"
+              target="_blank"
+              >Open-source code</a
+            >
+            by Liana Yukhymchak
+          </small>
+        </footer>
       </div>
-      <footer>
-        <small>
-          <a
-            href="https://github.com/lyukhymchak/vanilla-weather-app.git"
-            target="_blank"
-            >Open-source code</a
-          >
-          by Liana Yukhymchak
-        </small>
-      </footer>
     </div>
     <script src="src/app.js"></script>
   </body>
