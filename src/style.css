@@ -44,6 +44,18 @@ li {
   margin: 50px 0;
 }
 
+#celsius-link,
+#fahrenheit-link {
+  text-decoration: none;
+  cursor: default;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
 .weather-info {
   margin-bottom: 50px;
 }

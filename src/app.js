@@ -57,6 +57,10 @@ function search(city) {
   let apiKey = "0bf9a64f249d8b9bdf366b82bcb3cbf3";
   let unit = "metric";
   let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let celsiusLink = document.querySelector("#celsius-link");
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  fahrenheitLink.classList.remove("disabled");
+  celsiusLink.classList.add("disabled");
   axios.get(apiCall).then(displayTemperature);
 }
 
@@ -66,6 +70,33 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
+function convertToCelsius(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  let temperature = Number(currentTemperature.innerHTML);
+  currentTemperature.innerHTML = Math.round((temperature - 32) * (5 / 9));
+  let celsiusLink = document.querySelector("#celsius-link");
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  fahrenheitLink.classList.remove("disabled");
+  celsiusLink.classList.add("disabled");
+}
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  let temperature = Number(currentTemperature.innerHTML);
+  currentTemperature.innerHTML = Math.round(temperature * 1.8 + 32);
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  let celsiusLink = document.querySelector("#celsius-link");
+  celsiusLink.classList.remove("disabled");
+  fahrenheitLink.classList.add("disabled");
+}
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
 search("Tallinn");
 
 let form = document.querySelector("#search-form");
