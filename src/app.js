@@ -2,17 +2,28 @@ function displayTemperature(response) {
   console.log(response.data);
   let currentTemp = document.querySelector("#current-temperature");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
+
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
+
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatTime(response.data.dt * 1000);
+
+  let iconElement = document.querySelector("#current-weather-icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function getCurrentDay(timeStamp) {
