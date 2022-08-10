@@ -52,8 +52,21 @@ function getCurrentTime(timeStamp) {
 function formatTime(timeStamp) {
   return `${getCurrentDay(timeStamp)} ${getCurrentTime(timeStamp)}`;
 }
-let apiKey = "0bf9a64f249d8b9bdf366b82bcb3cbf3";
-let unit = "metric";
-let city = "Tallinn";
-let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-axios.get(apiCall).then(displayTemperature);
+
+function search(city) {
+  let apiKey = "0bf9a64f249d8b9bdf366b82bcb3cbf3";
+  let unit = "metric";
+  let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiCall).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#text-input");
+  search(cityInputElement.value);
+}
+
+search("Tallinn");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);

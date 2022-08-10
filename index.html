@@ -34,6 +34,25 @@
         <header>
           <h2 id="page-title">Weather forecast</h2>
         </header>
+        <form class="input-group" id="search-form">
+          <input
+            type="text"
+            id="text-input"
+            class="form-control"
+            placeholder="Enter your city"
+          />
+
+          <button type="submit" class="btn btn-outline-info" id="btn-search">
+            Search
+          </button>
+          <button
+            type="submit"
+            class="btn btn-outline-secondary"
+            id="btn-current-location"
+          >
+            <i class="fa-solid fa-location-dot"></i>
+          </button>
+        </form>
         <div class="row weather-info">
           <div class="col d-flex align-items-center">
             <ul>
