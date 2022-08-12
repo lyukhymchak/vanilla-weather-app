@@ -29,55 +29,110 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <div class="weather-app-wrapper">
-      <div class="container weather-app">
-        <header>
-          <h2 id="page-title">Weather forecast</h2>
-        </header>
-        <form class="input-group" id="search-form">
-          <input
-            type="text"
-            id="text-input"
-            class="form-control"
-            placeholder="Enter your city"
-          />
-
-          <button type="submit" class="btn btn-outline-info" id="btn-search">
-            Search
-          </button>
-          <button
-            type="submit"
-            class="btn btn-outline-secondary"
-            id="btn-current-location"
-          >
-            <i class="fa-solid fa-location-dot"></i>
-          </button>
-        </form>
-        <div class="row weather-info">
-          <div class="col d-flex align-items-center">
-            <ul>
-              <li><span id="date"></span>, <span id="description"></span></li>
-              <li>Humidity <span id="humidity"></span> %</li>
-              <li>Wind <span id="wind"></span> km/h</li>
-            </ul>
-          </div>
-          <div class="col d-flex align-items-center">
-            <img
-              id="current-weather-icon"
-              src="http://openweathermap.org/img/wn/01d@2x.png"
-              alt=""
+    <div class="container">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <header>
+            <h2 id="page-title">Weather forecast</h2>
+          </header>
+          <form class="input-group" id="search-form">
+            <input
+              type="text"
+              id="text-input"
+              class="form-control"
+              placeholder="Enter your city"
             />
-            <span id="current-temperature"></span>
-            <span class="units">
-              <a href="#" id="celsius-link" class="disabled">℃</a>|<a
-                href="#"
-                id="fahrenheit-link"
-                >℉</a
-              ></span
+
+            <button type="submit" class="btn btn-outline-info" id="btn-search">
+              Search
+            </button>
+            <button
+              type="submit"
+              class="btn btn-outline-secondary"
+              id="btn-current-location"
             >
+              <i class="fa-solid fa-location-dot"></i>
+            </button>
+          </form>
+          <div class="row weather-info">
+            <div class="col d-flex align-items-center">
+              <ul>
+                <li><span id="date"></span>, <span id="description"></span></li>
+                <li>Humidity <span id="humidity"></span> %</li>
+                <li>Wind <span id="wind"></span> km/h</li>
+              </ul>
+            </div>
+            <div class="col d-flex align-items-center">
+              <img
+                id="current-weather-icon"
+                src="http://openweathermap.org/img/wn/01d@2x.png"
+                alt=""
+              />
+              <span id="current-temperature"></span>
+              <span class="units">
+                <a href="#" id="celsius-link" class="disabled">℃</a>|<a
+                  href="#"
+                  id="fahrenheit-link"
+                  >℉</a
+                ></span
+              >
+            </div>
+            <div class="col d-flex align-items-center">
+              <h1 id="current-city"></h1>
+            </div>
           </div>
-          <div class="col d-flex align-items-center">
-            <h1 id="current-city"></h1>
+
+          <div class="weather-forecast">
+            <div class="row">
+              <div class="col-2">
+                <h3>Sun</h3>
+                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+              <div class="col-2">
+                <h3>Mon</h3>
+                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+              <div class="col-2">
+                <h3>Tue</h3>
+                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+              <div class="col-2">
+                <h3>Wed</h3>
+                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+              <div class="col-2">
+                <h3>Thu</h3>
+                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+              <div class="col-2">
+                <h3>Fri</h3>
+                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <div class="weather-forecast-temperature">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <footer id="footer">
