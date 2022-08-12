@@ -1,26 +1,48 @@
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
          <div class="col-2">
-                <h3>${day}</h3>
-                <img src="http://openweathermap.org/img/wn/03n@2x.png" alt="" />
+                <h3>${getDay(forecastDay.dt)}</h3>
+                <img src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" alt="" />
                 <div class="weather-forecast-temperature">
-                  <span class="weather-forecast-temperature-max"> 18° </span>
-                  <span class="weather-forecast-temperature-min"> 12° </span>
+                  <span class="weather-forecast-temperature-max"> ${Math.round(
+                    forecastDay.temp.max
+                  )}° </span>
+                  <span class="weather-forecast-temperature-min"> ${Math.round(
+                    forecastDay.temp.min
+                  )}° </span>
                 </div>
               </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
   console.log(forecastHTML);
+}
+function getDay(timeStamp) {
+  let date = new Date(timeStamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "0bf9a64f249d8b9bdf366b82bcb3cbf3";
+  let unit = "metric";
+  // let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function displayTemperature(response) {
   console.log(response.data);
@@ -48,6 +70,7 @@ function displayTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 function getCurrentDay(timeStamp) {
@@ -121,8 +144,8 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
-search("Tallinn");
-displayForecast();
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+search("Tallinn");
+displayForecast();

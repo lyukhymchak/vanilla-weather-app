@@ -8,6 +8,7 @@ ul {
 }
 li {
   list-style: none;
+  text-align: center;
   margin: 0;
   padding: 0;
   color: rgb(68, 67, 67);
@@ -29,11 +30,7 @@ li {
   height: 64px;
   width: 64px;
 }
-.units {
-  position: relative;
-  font-size: 12px;
-  top: -8px;
-}
+
 #page-title {
   text-align: center;
 }
@@ -50,6 +47,11 @@ li {
   cursor: default;
 }
 
+.units {
+  position: relative;
+  font-size: 12px;
+  top: -8px;
+}
 .disabled {
   pointer-events: none;
   cursor: default;
@@ -98,7 +100,4 @@ li {
   font-weight: 400;
   height: auto;
   line-height: 15px;
-}
-.weather-forecast-temperature-max {
-  font-weight: bold;
 }
