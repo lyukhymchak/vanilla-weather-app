@@ -1,5 +1,6 @@
+//Displaying the forecast data using the API
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  let forecast = response?.data?.daily;
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -28,24 +29,24 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
+
+//function to get a day of the week
 function getDay(timeStamp) {
   let date = new Date(timeStamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
+
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "0bf9a64f249d8b9bdf366b82bcb3cbf3";
   let unit = "metric";
-  // let apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(displayForecast);
 }
+
 function displayTemperature(response) {
-  console.log(response.data);
   let currentTemp = document.querySelector("#current-temperature");
   currentTemp.innerHTML = Math.round(response.data.main.temp);
 
