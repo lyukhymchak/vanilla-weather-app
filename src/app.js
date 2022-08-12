@@ -4,7 +4,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay, index) {
+  forecast?.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
@@ -140,12 +140,35 @@ function convertToFahrenheit(event) {
   fahrenheitLink.classList.add("disabled");
 }
 
+function handleCurrentPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "0bf9a64f249d8b9bdf366b82bcb3cbf3";
+  let unit = "metric";
+  let apiCall = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiCall).then((response) => {
+    let currentCity = document.querySelector("#current-city");
+    let currentTemperature = document.querySelector("#current-temperature");
+    let textInput = document.querySelector("#text-input");
+    textInput.value = "";
+    currentCity.innerHTML = response.data.name;
+    currentTemperature.innerHTML = Math.round(response.data.main.temp);
+  });
+}
+function searchCurrentLocation(event) {
+  event.preventDefault();
+  let celsiusLink = document.querySelector("#celsius-link");
+  celsiusLink.classList.add("disabled");
+  navigator.geolocation.getCurrentPosition(handleCurrentPosition);
+}
+
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
+let btnCurrentLocation = document.querySelector("#btn-current-location");
+btnCurrentLocation.addEventListener("click", searchCurrentLocation);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 search("Tallinn");
