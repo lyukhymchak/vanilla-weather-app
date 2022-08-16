@@ -1,2 +1,1 @@
-# vanilla-weather-app
- 
+https://lyukhymchak.github.io/vanilla-weather-app/
